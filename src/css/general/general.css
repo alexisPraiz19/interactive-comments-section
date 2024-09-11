@@ -5,8 +5,11 @@
 }
 
 body{
+    padding-top: 20px;
     font-family: "Rubik", sans-serif;
     font-size: 16px;
     font-weight: 400;
     background-color: var(--Light-gray);
+
+    h1:first-child{ text-align: center }
 }
