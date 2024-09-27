@@ -8,76 +8,26 @@
     <title>Interactive Comments Section</title>
   </head>
   <body>
-    <h1>Interactive Comments Simulation</h1>
+    <h1 class="title-page">Interactive Comments Simulation</h1>
 
-    <main class="main">
-      <article class="comment">
-        <!-- Contenido principal y respuestas -->
-        <div class="container-content-&-replies">
-          <!-- Caja con el contenido principal del comentario -->
-          <div class="content">
-            <aside class="score">
-              <span class="plus"><img src="public/svg/icon-plus.svg" alt="icon-plus"></span>
-              <em class="currenScore">12</em>
-              <span class="minus"><img src="public/svg/icon-minus.svg" alt="icon-plus"></span>
-            </aside>
-          
-            <div class="principal">
-              <div class="comment-info">
-                <img src="public/avatars/image-amyrobson.webp" alt="user-avatar" class="avatar">
-                <span class="username">amyrobson</span>
-                <span class="currentUser">you</span>
-                <time datetime="">1 month ago</time>
-                <button type="button">Reply</button>
-              </div>
-  
-              <p class="text-comment">
-                Impressive! Though it seems the drag feature could be improved. But overall it
-                looks incredible. You've nailed the design and the responsiveness at various breakpoints
-                works really well.
-              </p>
-            </div>
-          </div>
-          
-          <!-- Caja de respuestas al comentario principal -->
-          <div class="replies">
-            <div class="reply">
-              <aside class="score">
-                <span class="plus"><img src="public/svg/icon-plus.svg" alt="icon-plus"></span>
-                <em class="currenScore">12</em>
-                <span class="minus"><img src="public/svg/icon-minus.svg" alt="icon-plus"></span>
-              </aside>
-            
-              <div class="principal">
-                <div class="comment-info">
-                  <img src="public/avatars/image-amyrobson.webp" alt="user-avatar" class="avatar">
-                  <span class="username">amyrobson</span>
-                  <span class="currentUser">you</span>
-                  <time datetime="">1 month ago</time>
-                  
-                  <div class="delete-&-edit-comment">
-                    <button type="button">Delete</button>
-                    <button type="button">Edit</button>
-                  </div>
-                </div>
-    
-                <p class="text-comment">
-                  <span class="replying-to">@pepe</span> Esta es una respuesta a pepe
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-        
-        <!-- Caja hermana en caso de querer responder -->
-        <form class="reply">
-          <img src="public/avatars/image-juliusomo.webp" alt="currentUser-image" class="current-user">
-          <textarea name="reply comment" placeholder="Reply comment...">
-            Esta es un respuesta
-          </textarea>
-          <button type="submit">Reply</button>
-        </form>
-      </article>
+    <main class="main r-d-grid">
+      <!--Cada comentario se agregará dinámicamente desde JS. 
+        Su contenedor principal es un "article.container-comment" que su vez tiene un hijo "div.comment-and-replies"
+        (separador que contiene dos hijos div "comment" y "replies").
+        Este "article" también está estilado para poder contener un hijo "form" para agregar una respuesta al
+        comentario principal.
+        A su vez, el contenedor "replies" también está estilado para contener el mismo "form" y así poder ver
+        satisfactoriamente las "respuestas a las respuestas"
+      -->
     </main>
+
+    <!-- Formulario agregar comentarios -->
+    <form class="form-comment r-d-flex">
+      <img src="public/avatars/image-juliusomo.webp" alt="currentUser-image" class="current-user">
+      <textarea name="reply comment" placeholder="Add comment..."></textarea>
+      <button type="submit">Send</button>
+    </form>
+    
+  <script type="module" src="/src/js/index.js"></script>
   </body>
 </html>

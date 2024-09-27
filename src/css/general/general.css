@@ -5,11 +5,18 @@
 }
 
 body{
-    padding-top: 20px;
+    width: 54%;
+    margin: 0 auto 20px auto;
     font-family: "Rubik", sans-serif;
-    font-size: 16px;
     font-weight: 400;
     background-color: var(--Light-gray);
 
-    h1:first-child{ text-align: center }
+    .title-page{
+        margin-block: 20px;
+        text-align: center;
+    }
 }
+
+@media screen and (width <= 1440px){body{font-size: 17px}}
+@media screen and (width <= 1300px){body{font-size: 16px}}
+@media screen and (width <= 500px){body{font-size: 15px}}
