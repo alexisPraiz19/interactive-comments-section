@@ -1,5 +1,5 @@
 // Funciones interactivas
-import { add_comment } from "./interactiveFunctions/add_comment.js";
+import { add_reply } from "./interactiveFunctions/add_reply.js";
 import { change_score } from "./interactiveFunctions/change_score.js";
 import { reply } from "./interactiveFunctions/reply.js";
 import { delete_ } from "./interactiveFunctions/delete_comment.js";
@@ -13,7 +13,10 @@ export let main_events = (function(){
         if(classList.contains("btn-reply")) reply(target);
         if(classList.contains("plus") || classList.contains("minus")) change_score(target);
         if(classList.contains("delete")) delete_(target);
-        if(target.type == "submit") add_comment(e);
+    })
+
+    document.querySelector(".main").addEventListener("submit", (e)=>{
+        add_reply(e)
     })
 }())
 
@@ -21,26 +24,18 @@ export let main_events = (function(){
 import { log_comments } from "./index.js";
 import { HTMLComment } from "./HTMLComment.js";
 import { Comment } from "./interactiveFunctions/clases.js";
+import { dataObject } from "./dataObject.js";
 
 export let main_form = (function(){
     document.getElementById("main-form").addEventListener("submit", (e)=>{
         e.preventDefault();
         const $textarea     = e.target.children["add-comment"];
-        let   date_instance = new Date();
 
         if($textarea.value != ""){
-            const $main     = document.querySelector(".main");
-            const $comments = Array.from($main.querySelectorAll(".comment"));
-            let   user      = JSON.parse(sessionStorage.getItem("userinfo"));
-            let   date      = `${date_instance.getDate()}/${date_instance.getMonth()+1}/${date_instance.getFullYear()}`;
-            let   content   = $textarea.value;
-            let   replies   = [];
-            let   commentID = [];
+            let replies = [];
+            let {generateID, score, user, date, content} = dataObject($textarea);
+            const comment = new Comment(generateID, score, user, date, content, replies);
 
-            for(let comment of $comments){commentID.push(comment.dataset.id)};
-            let generateID = Math.max(...commentID)+1;
-
-            const comment = new Comment(generateID, 0, user, date, content, replies);
             HTMLComment(comment);
             log_comments(comment);
 

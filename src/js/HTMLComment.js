@@ -124,7 +124,7 @@ export function from_commentHTML(id, replyingTo){
     return `
     <form class="form-comment to-reply r-d-flex">
       <img src="public/avatars/image-juliusomo.webp" alt="currentUser-image" class="current-user">
-      <textarea name="reply comment" placeholder="Reply comment to ${replyingTo}..."></textarea>
+      <textarea name="reply-comment" placeholder="Reply comment to ${replyingTo}..."></textarea>
       <button type="submit" data-id=${id} data-replyingto=${replyingTo}>Reply</button>
     </form>`;
 }
