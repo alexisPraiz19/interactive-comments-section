@@ -17,8 +17,8 @@ export function generic_content({id, score, user, createdAt, content, isCurrentU
     const $textComment = document.createElement("P");
     const $buttons     = isCurrentUser ? `
         <div class="delete-and-edit">
-            <button type="button" class="delete r-button">Delete</button>
-            <button type="button" class="edit r-button">Edit</button>
+            <button type="button" data-id=${id} class="delete r-button">Delete</button>
+            <button type="button" data-id=${id} class="edit r-button">Edit</button>
         </div> 
     ` : `<button type="button" data-id=${id} data-replyingto=${user.username} class="btn-reply r-button">Reply</button>`;
 
@@ -38,13 +38,15 @@ export function generic_content({id, score, user, createdAt, content, isCurrentU
     $textComment.classList.add("text-comment", "r-text-color");
 
     // Agregando CONTENIDO a sus respectivos contenedores
-    $comment.setAttribute("data-id", `${id}`)
     $currentScore.innerText = score;
     $userName.innerText     = user.username;
     $createdAt.innerText    = createdAt;
     $textComment.innerText  = content;
     $avatar.src             = user.image;
     $avatar.alt             = `avatar ${user.username}`;
+
+    // Agregando ATRIBUTOS a sus respectivos elementos
+    $comment.setAttribute("data-id", `${id}`);
     
     // Agregando HIJOS a sus respectivos contenedores
     $score.appendChild($iconPlus);
@@ -73,8 +75,10 @@ export function generic_content({id, score, user, createdAt, content, isCurrentU
               $replyingTo.classList.add("replying-to");
               $replyingTo.innerText = `@${replyingTo} `;
 
+              $comment.setAttribute("data-content", "reply");
               $textComment.insertAdjacentElement("afterbegin", $replyingTo);
-    }
+
+    }else $comment.setAttribute("data-content", "comment");
     
     // Retorno
     $comment.appendChild($score);

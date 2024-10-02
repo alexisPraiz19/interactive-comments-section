@@ -1,6 +1,6 @@
 import "../css/index.css"; // Estilos CSS para toda la página
 
-import { $main_events } from "./main_events.js";
+import { main_events } from "./main_events.js";
 import { HTMLComment } from "./HTMLComment.js"; // Dinamic HTML
 
 // Función para recuperar los datos del JSON y "logearlos" en database
@@ -24,7 +24,7 @@ const IDBRequest =  indexedDB.open("comments", 1);
 // Creación de un almacen de datos/tabla para la base
 IDBRequest.addEventListener("upgradeneeded", ()=>{
     const database = IDBRequest.result;
-    database.createObjectStore("comment", { autoIncrement: true });
+    database.createObjectStore("comment", { keyPath: "id" });
 
     IDBRequest.addEventListener("success", ()=>{
         set_data();
@@ -43,19 +43,6 @@ function open_transaction(format){
     return trans_permission;
 }
 
-// Agregando comentario en DB (formato Object)
-export function log_comments(comment){open_transaction("readwrite").add(comment)}
-
-// Función para modidicar un comentario de DB
-export function modify_comment(key, comment){open_transaction("readwrite").put(comment, key)}
-
-//
-export function getComment(key){
-    if (key != undefined) return open_transaction("readonly").get(key);
-    else return open_transaction("readonly").getAll();
-}
-
-
 // Función para "leer" datos del "almacen de datos/tabla" (comment)
 export function read_database(){
     const cursor = open_transaction("readonly").openCursor();
@@ -70,3 +57,17 @@ export function read_database(){
     });
 }
 
+// Agregando comentario en DB (formato Object)
+export function log_comments(comment){open_transaction("readwrite").add(comment)}
+
+// Función para modidicar un comentario de DB
+export function modify_comment(comment){open_transaction("readwrite").put(comment)}
+
+// Función para obtener comentarios de la DB
+export function getComment(key){
+    if (key != undefined) return open_transaction("readonly").get(key);
+    else return open_transaction("readonly").getAll();
+}
+
+// Función para eliminar commentarios
+export function delete_comment(key){open_transaction("readwrite").delete(key)}

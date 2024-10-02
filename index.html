@@ -6,6 +6,7 @@
     <meta name="description" content="Página web para poner en práctica estudios de  Programación Web. Diseño del reto adquirido en 'FrontEnd Mentor'">
     <link rel="stylesheet" href="src/css/index.css" media="all">
     <title>Interactive Comments Section</title>
+    <script type="module" src="/src/js/index.js"></script>
   </head>
   <body>
     <h1 class="title-page">Interactive Comments Simulation</h1>
@@ -22,12 +23,10 @@
     </main>
 
     <!-- Formulario agregar comentarios -->
-    <form class="form-comment r-d-flex">
+    <form class="form-comment r-d-flex" id="main-form">
       <img src="public/avatars/image-juliusomo.webp" alt="currentUser-image" class="current-user">
-      <textarea name="reply comment" placeholder="Add comment..."></textarea>
+      <textarea name="add-comment" placeholder="Add comment..."></textarea>
       <button type="submit">Send</button>
     </form>
-    
-  <script type="module" src="/src/js/index.js"></script>
   </body>
 </html>

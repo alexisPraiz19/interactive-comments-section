@@ -1,10 +1,10 @@
 import { modify_comment, getComment } from "../index.js";
 import { generic_content } from "../HTMLComment.js";
-import { CommentConstructor } from "./clases.js";
+import { Comment } from "./clases.js";
 
-class Reply extends CommentConstructor{
-    constructor(id, score, user, createdAt, content, isCurrentUser, replyingTo){
-        super(id, score, user, createdAt, content, isCurrentUser);
+class Reply extends Comment{
+    constructor(id, score, user, createdAt, content, replyingTo){
+        super(id, score, user, createdAt, content);
         this.replyingTo = replyingTo;
     }
 }
@@ -36,7 +36,7 @@ export function add_comment(btn){
             // Creando objeto para pushear/ modificar comentario de DB
             let   user       = JSON.parse(sessionStorage.getItem("userinfo"));
             const generateID = Math.max(...all_id_comments)+1;
-            const reply      = new Reply(generateID, 0, user, date, text_content, true, dataset.replyingto);
+            const reply      = new Reply(generateID, 0, user, date, text_content, dataset.replyingto);
 
             if(classList.contains("comment-and-replies") && $add_comment_to.querySelector(".replies") == null){
                 // Agregando contenido HTML para ver respuestas
@@ -62,5 +62,5 @@ export function add_comment(btn){
         const from = $add_comment_to.querySelector(".form-comment");
         $add_comment_to.removeChild(from);
 
-    }else alert("No puedes agregar un comentario vacío.");
+    }else alert("No puedes agregar comentarios vacío.");
 }
