@@ -1,3 +1,10 @@
+/* Animaciones */
+@keyframes content-error {
+    from{ outline: 1.3px dashed #D91656 }
+    to{ outline: 1.3px dashed #fff }
+}
+
+/* Estilos */
 .main .comment-and-replies{
         width: 100%; height: auto;
 
@@ -72,31 +79,44 @@
                     .btn-reply{
                         position: absolute;
                         right: 20px;
-                        &::after{ background-image: url("/public/svg/icon-reply.svg") }
+                        &::after{ background-image: url("/svg/icon-reply.svg") }
                     }
 
                     .delete-and-edit{
                         position: absolute;
                         right: 20px;
         
-                        button:first-child{
+                        .delete{
                             margin-right: 5px;
                             color: var(--Soft-Red);
-                            &::after{ background-image: url("/public/svg/icon-delete.svg") }
+                            &::after{ background-image: url("/svg/icon-delete.svg") }
                         }
         
-                        button:last-child{&::after{ background-image: url("/public/svg/icon-edit.svg") }}
+                        .edit{&::after{ background-image: url("/svg/icon-edit.svg") }}
+                        .save{&::after{ background-image: url("/svg/icon-save.svg") }}
                     }
                 }
 
                 .text-comment{
                     margin-top: 12px;
                     font-size: .95em;
+                    transition: all .1s linear;
 
                     .replying-to{
                         font-weight: 700;
                         color: var(--Moderate-blue);
                     }
+                }
+
+                .editable{
+                    padding: 5px 10px 10px 10px;
+                    outline: 1.1px dashed var(--Moderate-blue);
+                    border-radius: 4px;
+                    transform: scale(.98);
+                }
+
+                .content-error{
+                    animation: content-error 1s linear alternate infinite;
                 }
             }
         }

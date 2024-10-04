@@ -74,6 +74,7 @@ export function generic_content({id, score, user, createdAt, content, isCurrentU
         const $replyingTo = document.createElement("SPAN");
               $replyingTo.classList.add("replying-to");
               $replyingTo.innerText = `@${replyingTo} `;
+              $replyingTo.setAttribute("contenteditable", "false");
 
               $comment.setAttribute("data-content", "reply");
               $textComment.insertAdjacentElement("afterbegin", $replyingTo);
