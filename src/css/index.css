@@ -3,3 +3,13 @@
 @import "general/colors.css";
 @import "general/reusable.css";
 @import "general/general.css";
+
+/* Markup Style */
+@import "markup_style/container_comment.css";
+@import "markup_style/form.css";
+
+
+.main{
+    gap: 20px;
+    overflow: hidden;
+}

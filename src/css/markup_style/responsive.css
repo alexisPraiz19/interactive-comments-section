@@ -1,0 +1,34 @@
+@media screen and (width <= 1024px){body{ width: 65%; }} /*Laptop*/
+@media screen and (width <= 800px){body{ width: 80%; }} /*Tablet*/
+
+/*Mobile*/
+@media screen and (width <= 500px){
+    body{ 
+        width: 90%;
+
+        .main .comment-and-replies{
+            .comment{
+                padding: 15px 15px 64px 15px;
+    
+                .score{
+                    position: absolute;
+                    bottom: 15px;
+                    display: flex;
+                    align-items: center;
+                    width: 84px; height: 32px;
+                    padding: 0;
+                }
+    
+                .content{
+                    .info{.btn-reply, .delete-and-edit{ bottom: 22px }}
+                    .text-comment{margin-top: 15px}
+                }
+            }
+
+            .replies{
+                &::before{left: 0}
+                .comment, .form-comment{ width: 96%; }
+            }
+        }
+    }
+} 

@@ -1,2 +1,21 @@
-.r-d-flex{ display: flex; }
-.r-d-grid{ display: grid; }
+.r-d-flex{ display: flex }
+.r-d-grid{ display: grid }
+
+.r-button{
+    position: relative;
+    padding-left: 20px;
+    font-weight: 700;
+    color: var(--Moderate-blue);
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+
+    &::after{
+        content: "";
+        position: absolute;
+        left: 0;
+        width: 20px; height: 20px;
+        background-repeat: no-repeat;
+    }
+}
+.r-text-color{ color: var(--Grayish-Blue) }

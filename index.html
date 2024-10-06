@@ -3,11 +3,29 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Página web para poner en práctica estudios de  Programación Web. Diseño del reto adquirido en 'FrontEnd Mentor'">
-    <link rel="stylesheet" href="src/css/index.css" media="all">
+    <meta name="description" content="Página web para poner en práctica estudios de Programación Web. Diseño del reto adquirido en 'FrontEnd Mentor'">
+    <script type="module" src="/src/js/index.js"></script>
     <title>Interactive Comments Section</title>
   </head>
   <body>
-    <h1>hola</h1>
+    <h1 class="title-page">Interactive Comments Simulation</h1>
+
+    <main class="main r-d-grid">
+      <!--Cada comentario se agregará dinámicamente desde JS. 
+        Su contenedor principal es un "article.container-comment" que su vez tiene un hijo "div.comment-and-replies"
+        (separador que contiene dos hijos div "comment" y "replies").
+        Este "article" también está estilado para poder contener un hijo "form" para agregar una respuesta al
+        comentario principal.
+        A su vez, el contenedor "replies" también está estilado para contener el mismo "form" y así poder ver
+        satisfactoriamente las "respuestas a las respuestas"
+      -->
+    </main>
+
+    <!-- Formulario agregar comentarios -->
+    <form class="form-comment r-d-flex" id="main-form">
+      <img src="/avatars/image-juliusomo.webp" alt="currentUser-image" class="current-user">
+      <textarea name="add-comment" placeholder="Add comment..."></textarea>
+      <button type="submit">Send</button>
+    </form>
   </body>
 </html>
