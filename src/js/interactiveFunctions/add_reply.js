@@ -37,7 +37,7 @@ export function add_reply(event){
             result.replies.push(reply);
             modify_comment(result);
         }
-
+        
         // Finalmente
         $target.parentNode.removeChild($target);
     }

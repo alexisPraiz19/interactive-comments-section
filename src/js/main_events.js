@@ -8,7 +8,7 @@ import { edit } from "./interactiveFunctions/edit.js";
 // Función principal de exportación
 export let main_events = (function(){
     document.querySelector(".main").addEventListener("click", (e)=>{
-        let $target    = e.target;
+        let $target   = e.target;
         let classList = $target.classList;
 
         if(classList.contains("btn-reply")) reply($target);
@@ -20,13 +20,13 @@ export let main_events = (function(){
     document.querySelector(".main").addEventListener("submit", add_reply );
 }())
 
+// Función para agregar comentarios desde el Formulario Principal
 // Import dependencies
 import { log_comments } from "./index.js";
 import { HTMLComment } from "./HTMLComment.js";
 import { Comment } from "./clases.js";
 import { dataObject } from "./dataObject.js";
 
-// Función para agregar comentarios desde el Formulario Principal
 export let main_form = (function(){
     document.getElementById("main-form").addEventListener("submit", (e)=>{
         e.preventDefault();

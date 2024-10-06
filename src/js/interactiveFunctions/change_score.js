@@ -5,7 +5,6 @@ export function change_score(target){
     const $current_score = target.parentNode.querySelector(".current-score");
     let   score          = parseInt($current_score.textContent);
     let   data_id; // ID del comentario principal
-    let   comment; // Varible que contiene el comentario de DB al que se le va a modificar el "score"
     
     if(target.classList.contains("plus") && score  >= 0) score++;
     else if(target.classList.contains("minus") && score > 0) score--;

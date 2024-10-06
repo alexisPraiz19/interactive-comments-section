@@ -1,3 +1,6 @@
+/* Estilos RESPONSIVE */
+@import "./responsive.css";
+
 /* Animaciones */
 @keyframes content-error {
     from{ outline: 1.3px dashed #D91656 }
@@ -79,6 +82,7 @@
                     .btn-reply{
                         position: absolute;
                         right: 20px;
+                        font-size: 1em;
                         &::after{ background-image: url("/svg/icon-reply.svg") }
                     }
 
@@ -88,11 +92,12 @@
         
                         .delete{
                             margin-right: 5px;
+                            font-size: 1em;
                             color: var(--Soft-Red);
                             &::after{ background-image: url("/svg/icon-delete.svg") }
                         }
         
-                        .edit{&::after{ background-image: url("/svg/icon-edit.svg") }}
+                        .edit{font-size: 1em; &::after{ background-image: url("/svg/icon-edit.svg") }}
                         .save{&::after{ background-image: url("/svg/icon-save.svg") }}
                     }
                 }

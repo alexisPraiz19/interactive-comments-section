@@ -1,6 +1,4 @@
-import "../css/index.css"; // Estilos CSS para toda la página
-
-import { main_events } from "./main_events.js";
+import { main_events } from "./main_events.js"; // Eventos principales, es una función auto ejecutable
 import { HTMLComment } from "./HTMLComment.js"; // Dinamic HTML
 
 // Función para recuperar los datos del JSON y "logearlos" en database
