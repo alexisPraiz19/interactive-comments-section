@@ -45,8 +45,8 @@
                     &:hover{filter: brightness(0) saturate(100%) invert(31%) sepia(46%) saturate(1367%) hue-rotate(209deg) brightness(96%) contrast(84%)}
                 }
     
-                .plus{background-image: url("/public/svg/icon-plus.svg")}
-                .minus{background-image: url("/public/svg/icon-minus.svg")}
+                .plus{background-image: url("/svg/icon-plus.svg")}
+                .minus{background-image: url("/svg/icon-minus.svg")}
             }
 
             .content{

@@ -91,7 +91,7 @@ export function generic_content({id, score, user, createdAt, content, isCurrentU
 // Principal exportación
 export function HTMLComment({id, score, user, createdAt, content, replies}){
     // Variables necesarias para extraer información del "current user" almacenado en "sessionStorage" 
-    // y alterar "isCurrentUser" según esa información ("falso" por defecto)
+    // y alterar "isCurrentUser" según esa información. ("falso" por defecto)
     let currentUser_storage = JSON.parse(sessionStorage.getItem("userinfo"));
     let isCurrentUser       = false; 
     user.username == currentUser_storage.username ? isCurrentUser = true : isCurrentUser = false;
@@ -124,7 +124,7 @@ export function HTMLComment({id, score, user, createdAt, content, replies}){
 export function from_commentHTML(id, replyingTo){
     return `
     <form class="form-comment to-reply r-d-flex">
-      <img src="public/avatars/image-juliusomo.webp" alt="currentUser-image" class="current-user">
+      <img src="/avatars/image-juliusomo.webp" alt="currentUser-image" class="current-user">
       <textarea name="reply-comment" placeholder="Reply comment to ${replyingTo}..."></textarea>
       <button type="submit" data-id=${id} data-replyingto=${replyingTo}>Reply</button>
     </form>`;

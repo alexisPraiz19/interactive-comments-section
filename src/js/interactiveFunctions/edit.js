@@ -1,7 +1,7 @@
 // Funciones de dependecia
 import { getComment, modify_comment } from "../index.js";
 
-// Función principal de exportación
+// Función para editar comentarios/respuestas
 export function edit($target){
     let $content = $target.closest(".info").nextElementSibling;
 

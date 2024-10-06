@@ -59,15 +59,9 @@ export function read_database(){
 
 // Agregando comentario en DB (formato Object)
 export function log_comments(comment){open_transaction("readwrite").add(comment)}
-
 // Función para modidicar un comentario de DB
 export function modify_comment(comment){open_transaction("readwrite").put(comment)}
-
 // Función para obtener comentarios de la DB
-export function getComment(key){
-    if (key != undefined) return open_transaction("readonly").get(key);
-    else return open_transaction("readonly").getAll();
-}
-
+export function getComment(key){ return open_transaction("readonly").get(key)}
 // Función para eliminar commentarios
 export function delete_comment(key){open_transaction("readwrite").delete(key)}

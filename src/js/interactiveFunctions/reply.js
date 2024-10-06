@@ -2,8 +2,8 @@
 import { from_commentHTML } from "../HTMLComment";
 
 export function reply(target){
-    const comment    = target.closest(".comment");
     const main       = target.closest(".main");
+    const comment    = target.closest(".comment");
     let   replyingTo = target.dataset.replyingto;
     let   comment_id = target.dataset.id;
     

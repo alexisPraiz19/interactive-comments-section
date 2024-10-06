@@ -17,27 +17,25 @@ export let main_events = (function(){
         if(classList.contains("edit")) edit($target);
     })
 
-    document.querySelector(".main").addEventListener("submit", (e)=>{
-        add_reply(e)
-    })
+    document.querySelector(".main").addEventListener("submit", add_reply );
 }())
 
 // Import dependencies
 import { log_comments } from "./index.js";
 import { HTMLComment } from "./HTMLComment.js";
-import { Comment } from "./interactiveFunctions/clases.js";
+import { Comment } from "./clases.js";
 import { dataObject } from "./dataObject.js";
 
-
+// Función para agregar comentarios desde el Formulario Principal
 export let main_form = (function(){
     document.getElementById("main-form").addEventListener("submit", (e)=>{
         e.preventDefault();
-        const $textarea     = e.target.children["add-comment"];
+        const $textarea = e.target.children["add-comment"];
 
         if($textarea.value != ""){
             let replies = [];
-            let {generateID, score, user, date, content} = dataObject($textarea);
-            const comment = new Comment(generateID, score, user, date, content, replies);
+            let {generateID, score, user, createdAt, content} = dataObject($textarea);
+            const comment = new Comment(generateID, score, user, createdAt, content, replies);
 
             HTMLComment(comment);
             log_comments(comment);

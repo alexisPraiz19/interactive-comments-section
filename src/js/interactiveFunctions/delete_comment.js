@@ -1,5 +1,7 @@
+// Funciones de dependencia
 import { delete_comment, getComment, modify_comment } from "../index.js";
 
+// Función para eliminar comentarios/respuestas
 export function delete_(target){
    const $main            = document.querySelector(".main");
    const $remove          = target.closest(".comment"); // Respuesta/Comentario

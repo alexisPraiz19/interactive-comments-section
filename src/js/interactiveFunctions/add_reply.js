@@ -1,6 +1,7 @@
+// Funciones de dependencia
 import { modify_comment, getComment } from "../index.js";
 import { generic_content } from "../HTMLComment.js";
-import { Reply } from "./clases.js";
+import { Reply } from "../clases.js";
 import { dataObject } from "../dataObject.js";
 
 // Función para agregar respuestas
