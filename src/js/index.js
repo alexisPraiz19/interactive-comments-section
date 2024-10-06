@@ -1,3 +1,4 @@
+import "../css/index.css";
 import { main_events } from "./main_events.js"; // Eventos principales, es una función auto ejecutable
 import { HTMLComment } from "./HTMLComment.js"; // Dinamic HTML
 
