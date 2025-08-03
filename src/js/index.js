@@ -6,6 +6,7 @@ import { HTMLComment } from "./HTMLComment.js"; // Dinamic HTML
 async function set_data(){
     const request  = await fetch("data.json");
     const response = await request.json();
+    
     for(let comment of response.comments){ log_comments(comment) }
 }
 
@@ -20,18 +21,22 @@ async function set_data(){
 // Creación/apertura de la base de datos "comments"
 const IDBRequest =  indexedDB.open("comments", 1);
 
+// Si la base de datos existía previamente, se lee, sino, se crea en el evento "upgradeneeded" 
+// y se establece como "creada" en localStorage
+if(JSON.parse(localStorage.getItem("DBCommentOpened"))) IDBRequest.addEventListener("success", read_database);
+
 // Creación de un almacen de datos/tabla para la base
 IDBRequest.addEventListener("upgradeneeded", ()=>{
     const database = IDBRequest.result;
     database.createObjectStore("comment", { keyPath: "id" });
-
+    
+    // Este código "logea" y "lee" los comentarios en la database una vez creada
     IDBRequest.addEventListener("success", ()=>{
         set_data();
         read_database();
-    }) // Este código "logea" y "lee" los comentarios en la database una vez creada
+        localStorage.setItem("DBCommentOpened", true);
+    }) 
 });
-
-IDBRequest.addEventListener("success", ()=>{read_database()});
 
 // Función que permite abrir una "transación" en la database
 function open_transaction(format){
@@ -44,23 +49,21 @@ function open_transaction(format){
 
 // Función para "leer" datos del "almacen de datos/tabla" (comment)
 export function read_database(){
-    const cursor = open_transaction("readonly").openCursor();
-    
-    cursor.addEventListener("success", ()=>{
-        if(cursor.result){
-            HTMLComment(cursor.result.value);
-            cursor.result.continue();
-        }else{
-            console.log("todos los datos fueron leídos")
-        }
-    });
+    setTimeout(()=> {
+        let cursor = open_transaction("readonly").openCursor();
+
+        cursor.addEventListener("success", e => {
+            if(e.target.result){
+                HTMLComment(e.target.result.value)
+                e.target.result.continue()
+            }
+            else document.getElementById("modal-loading_comment").style.display = "none"
+        })
+    }, 700)
 }
 
-// Agregando comentario en DB (formato Object)
-export function log_comments(comment){open_transaction("readwrite").add(comment)}
-// Función para modidicar un comentario de DB
-export function modify_comment(comment){open_transaction("readwrite").put(comment)}
-// Función para obtener comentarios de la DB
-export function getComment(key){ return open_transaction("readonly").get(key)}
-// Función para eliminar commentarios
-export function delete_comment(key){open_transaction("readwrite").delete(key)}
+
+export function log_comments(comment){open_transaction("readwrite").add(comment)}// Agregando comentario en DB (formato Object)
+export function modify_comment(comment){open_transaction("readwrite").put(comment)}// Función para modidicar un comentario de DB
+export function getComment(key){ return open_transaction("readonly").get(key)}// Función para obtener comentarios de la DB
+export function delete_comment(key){open_transaction("readwrite").delete(key)}// Función para eliminar commentarios

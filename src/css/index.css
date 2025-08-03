@@ -11,5 +11,26 @@
 
 .main{
     gap: 20px;
+    margin-top: 20px;
     overflow: hidden;
+
+    #modal-loading_comment{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        font-size: 2rem;
+        font-weight: 700;
+        color: #6abc80;
+        letter-spacing: 1px;
+        
+        svg{ 
+            width: 80px; 
+            animation: spin 1s linear infinite;
+        }
+    }
+}
+
+@keyframes spin {
+    to{ transform: rotate(360deg); }
 }
